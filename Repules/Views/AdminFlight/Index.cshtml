@@ -1,0 +1,75 @@
+﻿@using  Repules.Model
+@model IEnumerable<Repules.Models.AdminFlightViewModel>
+
+@{
+    ViewData["Title"] = "Repülések";
+}
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">Repülések</div>
+    <div class="panel-body">
+        <form asp-action="Index" method="post">
+            @Html.DropDownList("FlightStatus",
+                    Html.GetEnumSelectList<FlightStatus>(),
+                    "Válaszd ki a repülés státuszát", new { style = "width: 250px;" })
+            <!--class = "form-control"-->
+
+            <button type="submit">Szűrés</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Duration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartureName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArrivalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Duration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartureName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ArrivalName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Részletek", "Details", new { id = item.FlightId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

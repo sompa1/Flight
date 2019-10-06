@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Repules.Models.UserFlightViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">Repüléseim</div>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Logfájl feltöltés", "Upload", "FlightLogFile")
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Duration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartureName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ArrivalName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Duration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartureName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ArrivalName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Részletek", "Details", new { id = item.FlightId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿
+<div class="panel panel-info">
+    <div class="panel-heading"><h4>Logfájl feltöltés</h4></div>
+    <div class="panel-body">
+        <form method="post" enctype="multipart/form-data" asp-controller="FlightLogFile" asp-action="Upload">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Tölts fel egy logfájlt a formon keresztül:</p>
+                    <input type="file" name="files">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Feltöltés">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

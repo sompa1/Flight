@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Repules.Bll\Repules.Bll.csproj" />
+    <ProjectReference Include="..\Repules.Dal\Repules.Dal.csproj" />
+    <ProjectReference Include="..\Repules.Model\Repules.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AirportExcelFile\" />
+    <Folder Include="FlightLogs\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.4" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.4" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.4" />
+  </ItemGroup>
+
+</Project>
