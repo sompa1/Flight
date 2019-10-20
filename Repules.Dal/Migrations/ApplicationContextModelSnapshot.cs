@@ -145,6 +145,22 @@ namespace Repules.Dal.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"),
+                            ConcurrencyStamp = "ec45e640-69e0-4177-a819-306979fbb746",
+                            Name = "user",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"),
+                            ConcurrencyStamp = "cd0507ec-4808-46c1-9dc2-76612740663f",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Repules.Model.ApplicationUser", b =>
@@ -213,6 +229,22 @@ namespace Repules.Dal.Migrations
                             SecurityStamp = "L5GKNFULGY54QZWALF5YELHAHHZSEF5B",
                             TwoFactorEnabled = false,
                             UserName = "panni"
+                        },
+                        new
+                        {
+                            Id = new Guid("b89f5bf2-040d-4dd5-32df-08d74a8d31b7"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "cd16e589-657a-4aa9-bed8-fe8c2f9e27a1",
+                            Email = "admin@admin.hu",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@ADMIN.HU",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAELxIn43pMpHivyUzDkrTl2OAw/el6ZVGF2Mmw/z22dB1BbltY+M5tTFmHc8KbDdGcQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "TARD737IV7D4UC3F2RAWPD7C574GXDEH",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
                         });
                 });
 
@@ -307,6 +339,11 @@ namespace Repules.Dal.Migrations
                         {
                             UserId = new Guid("bc9ecb96-a585-4c27-98b7-5ddad62cae63"),
                             RoleId = new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191")
+                        },
+                        new
+                        {
+                            UserId = new Guid("b89f5bf2-040d-4dd5-32df-08d74a8d31b7"),
+                            RoleId = new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191")
                         });
                 });
 

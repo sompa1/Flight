@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repules.Dal.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -128,7 +128,8 @@ namespace Repules.Dal.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(nullable: false),
-                    RoleId = table.Column<Guid>(nullable: false)
+                    RoleId = table.Column<Guid>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -251,9 +252,32 @@ namespace Repules.Dal.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"), "ec45e640-69e0-4177-a819-306979fbb746", "user", "USER" },
+                    { new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"), "cd0507ec-4808-46c1-9dc2-76612740663f", "admin", "ADMIN" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("bc9ecb96-a585-4c27-98b7-5ddad62cae63"), 0, "61104595-46bb-453a-be97-edcc7fa704e1", "panni@panni.hu", false, true, null, "PANNI@PANNI.HU", "PANNI", "AQAAAAEAACcQAAAAELxIn43pMpHivyUzDkrTl2OAw/el6ZVGF2Mmw/z22dB1BbltY+M5tTFmHc8KbDdGcQ==", null, false, "L5GKNFULGY54QZWALF5YELHAHHZSEF5B", false, "panni" });
+                values: new object[,]
+                {
+                    { new Guid("bc9ecb96-a585-4c27-98b7-5ddad62cae63"), 0, "61104595-46bb-453a-be97-edcc7fa704e1", "panni@panni.hu", false, true, null, "PANNI@PANNI.HU", "PANNI", "AQAAAAEAACcQAAAAELxIn43pMpHivyUzDkrTl2OAw/el6ZVGF2Mmw/z22dB1BbltY+M5tTFmHc8KbDdGcQ==", null, false, "L5GKNFULGY54QZWALF5YELHAHHZSEF5B", false, "panni" },
+                    { new Guid("b89f5bf2-040d-4dd5-32df-08d74a8d31b7"), 0, "cd16e589-657a-4aa9-bed8-fe8c2f9e27a1", "admin@admin.hu", false, true, null, "ADMIN@ADMIN.HU", "ADMIN", "AQAAAAEAACcQAAAAELxIn43pMpHivyUzDkrTl2OAw/el6ZVGF2Mmw/z22dB1BbltY+M5tTFmHc8KbDdGcQ==", null, false, "TARD737IV7D4UC3F2RAWPD7C574GXDEH", false, "admin" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId", "Discriminator" },
+                values: new object[] { new Guid("bc9ecb96-a585-4c27-98b7-5ddad62cae63"), new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"), "ApplicationUserRole" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId", "Discriminator" },
+                values: new object[] { new Guid("b89f5bf2-040d-4dd5-32df-08d74a8d31b7"), new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"), "ApplicationUserRole" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

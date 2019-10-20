@@ -125,7 +125,7 @@ namespace Repules
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SetupAuth(app.ApplicationServices).Wait();
+            //SetupAuth(app.ApplicationServices).Wait();
         }
 
         public static async Task SetupAuth(IServiceProvider serviceProvider) //beszurja az adatbazisba a felhasznalókat és a role-okat
