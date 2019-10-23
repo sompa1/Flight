@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repules.Bll.Managers;
+using Repules.Bll;
 using Repules.Model;
 using Repules.Models;
+using Repules.Model.WeatherMapModels;
 
 namespace Repules.Controllers
 {
@@ -17,22 +19,49 @@ namespace Repules.Controllers
     public class AirportController : Controller
     {
         private readonly AirportManager airportManager;
+        private readonly IWeatherService weatherService;
 
-        public AirportController(AirportManager airportManager)
+        public AirportController(AirportManager airportManager, IWeatherService weatherService)
         {
             this.airportManager = airportManager;
+            this.weatherService = weatherService;
         }
 
         public IActionResult Index()
         {
             List<Airport> airports = airportManager.GetAirports();
-            List<AirportViewModel> airportViewModels = airports.Select(a => new AirportViewModel()
+            /*
+            List<WeatherResponse> weatherResponses = new List<WeatherResponse>();
+            foreach (Airport airport in airports)
+            {
+                weatherResponses.Add(weatherService.GetWeatherByCoords(airport.Latitude, airport.Longitude));
+            }
+
+            List<AirportViewModel> airportViewModels = new List<AirportViewModel>();
+            for (int i= 0; i < airports.Count(); i++)
+            {
+                AirportViewModel av = new AirportViewModel()
+                {
+                    AirportId = airports[i].AirportId,
+                    Name = airports[i].Name,
+                    Weather = weatherResponses[i].Weather[0].Icon,
+                    Latitude = airports[i].Latitude,
+                    Longitude = airports[i].Longitude
+
+                };
+                airportViewModels.Add(av);
+            }*/
+
+            List <AirportViewModel> airportViewModels = airports.Select(a => new AirportViewModel()
             {
                 AirportId = a.AirportId,
                 Name = a.Name,
+                WeatherIcon = weatherService.GetWeatherByCoords(a.Latitude, a.Longitude).Weather[0].Icon,
+                WeatherMain = weatherService.GetWeatherByCoords(a.Latitude, a.Longitude).Weather[0].Main,
                 Latitude = a.Latitude,
                 Longitude = a.Longitude
             }).ToList();
+
             return View(airportViewModels);
         }
 

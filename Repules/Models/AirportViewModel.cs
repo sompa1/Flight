@@ -13,6 +13,11 @@ namespace Repules.Models
         [Display(Name = "Repülőtér neve")]
         public string Name { get; set; }
 
+        [Display(Name = "Időjárás")]
+        public string WeatherIcon { get; set; }
+
+        public string WeatherMain { get; set; }
+
         [Display(Name = "Szélesség")]
         public double Latitude { get; set; }
 

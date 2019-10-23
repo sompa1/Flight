@@ -11,6 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IAirportService, AirportService>();
             services.AddTransient<IFlightLogFileService, FlightLogFileService>();
             services.AddTransient<IGPSRecordService, GPSRecordService>();
+            services.AddScoped<IWeatherService, WeatherService>();
             services.AddTransient<AirportManager>();
             services.AddTransient<FlightLogFileManager>();
             services.AddTransient<FlightManager>();

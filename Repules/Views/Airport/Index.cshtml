@@ -17,6 +17,9 @@
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.WeatherIcon)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.Latitude)
                         </th>
                         <th>
@@ -28,21 +31,26 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Latitude)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Longitude)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Szerkesztés", "Edit", new { id = item.AirportId }) |
-                                @Html.ActionLink("Törlés", "Delete", new { id = item.AirportId })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td align="center" style=" background-color: #d9edf7;">
+                            <img src=@($"http://openweathermap.org/img/wn/{item.WeatherIcon}.png") alt="Icon">
+                            @Html.DisplayFor(modelItem => item.WeatherMain)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Latitude)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Longitude)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Szerkesztés", "Edit", new { id = item.AirportId }) |
+                            @Html.ActionLink("Törlés", "Delete", new { id = item.AirportId })
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
