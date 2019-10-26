@@ -6,36 +6,39 @@
 @{
     if (User.IsInRole("admin"))
     {
-        <nav class="navbar fixed-top navbar-light" style="background-color: #d9edf7">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SmartFlights</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Kezdőlap</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">Rólunk</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Kapcsolat</a></li>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SmartFlights</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Felhasználók</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Kezdőlap</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Rólunk</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Kapcsolat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AdminFlight" asp-action="Index">Felhasználók repülései</a>
+                            <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Felhasználók</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Airport" asp-action="Index">Repülőterek</a>
+                            <a class="nav-link" asp-area="" asp-controller="AdminFlight" asp-action="Index">Felhasználók repülései</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="SearchCity">Időjárás</a>
+                            <a class="nav-link" asp-area="" asp-controller="Airport" asp-action="Index">Repülőterek</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Airport" asp-action="Upload">Repülőterek importálása</a>
+                            <a class="nav-link" asp-area="" asp-controller="Weather" asp-action="SearchCity">Időjárás</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Airport" asp-action="Upload">Repülőterek importálása</a>
                         </li>
                         <li class="nav-item">
                             @if (signInManager.IsSignedIn(User))
@@ -44,10 +47,19 @@
                             }
                             else
                             {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Belépés</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Belépés</a>
                             }
                         </li>
+                    </ul>
 
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="https://github.com/sompa1/Flight" class="nav-link border border-light rounded"
+                               target="_blank">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -56,30 +68,26 @@
     }
     else
     {
-        <nav class="navbar fixed-top navbar-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SmartFlights</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Kezdőlap</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">Rólunk</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Kapcsolat</a></li>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SmartFlights</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
+                        aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent2">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Kezdőlap</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Rólunk</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Kapcsolat</a></li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserFlight" asp-action="Index">Repüléseim</a>
+                            <a class="nav-link" asp-area="" asp-controller="UserFlight" asp-action="Index">Repüléseim</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="FlightLogFile" asp-action="Upload">Logfájl feltöltése</a>
+                            <a class="nav-link" asp-area="" asp-controller="FlightLogFile" asp-action="Upload">Logfájl feltöltése</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Weather" asp-action="SearchCity">Időjárás</a>
+                            <a class="nav-link" asp-area="" asp-controller="Weather" asp-action="SearchCity">Időjárás</a>
                         </li>
                         <li class="nav-item">
                             @if (signInManager.IsSignedIn(User))
@@ -88,11 +96,23 @@
                             }
                             else
                             {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Belépés</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Belépés</a>
                             }
                         </li>
 
                     </ul>
+
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="https://github.com/sompa1/Flight" class="nav-link border border-light rounded"
+                               target="_blank">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
 
