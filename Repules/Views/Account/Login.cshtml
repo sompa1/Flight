@@ -1,21 +1,85 @@
 ﻿@model LoginViewModel
-<center>
-    <div class="panel panel-info" style="width: 600px">
-        <div class="panel-heading"><h4>Bejelentkezés</h4></div>
-        <div class="text-danger" asp-validation-summary="All"></div>
-        <form asp-action="Login" method="post">
-            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" /> @*rejtett mezőben visszaküldjük, h honnan jött a felhasznalo*@
-            <div class="form-group" style="width: 200px">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
+<!-- Mask & flexbox options-->
+<div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+    <!-- Content -->
+    <div class="container">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4 white-text text-center text-md-left">
+
+                <h1 class="display-4 font-weight-bold">Üdvözöljük a SmartFlights oldalon!</h1>
+
+                <hr class="hr-light">
+
+                <p>
+                    Legjobb ingyenes repüléseket feldolgozó applikáció!
+                </p>
+
+                <p class="mb-4 d-none d-md-block">
+                    <strong>
+                        Felhasználóbarát, egyszerűen kezelhető, célja, hogy nyomon tudja követni sportcélú repüléseit!
+                    </strong>
+                </p>
+
             </div>
-            <div class="form-group" style="width: 200px">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
+
+            <!--Grid column-->
+            <div class="col-md-6 col-xl-5 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <!-- Form -->
+                        <form asp-action="Login" method="post">
+                            <!-- Heading -->
+                            <h3 class="dark-grey-text text-center">
+                                <strong>Bejelentkezés</strong>
+                            </h3>
+                            <hr>
+                            <div class="text-danger" asp-validation-summary="All"></div>
+
+                            <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" /> @*rejtett mezőben visszaküldjük, h honnan jött a felhasznalo*@
+                            <div class="md-form">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input type="email" id="form2" class="form-control" asp-for="Email">
+                                <label for="form2" asp-for="Email">Your email</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                <input type="password" id="form8" class="form-control" asp-for="Password">
+                                <label for="form8" asp-for="Password">Your password</label>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn btn-indigo waves-effect waves-light" type="submit">Lépj be!</button>
+
+                            </div>
+
+                        </form>
+                        <!-- Form -->
+
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
             </div>
-            <center>            
-                <button class="btn btn-primary" type="submit">Bejelentkezés</button>
-            </center>
-        </form>
+            <!--Grid column-->
+
+
+        </div>
+        <!--Grid row-->
+
     </div>
-</center>
+    <!-- Content -->
+
+</div>
+<!-- Mask & flexbox options-->
+
