@@ -3,40 +3,58 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<div class="panel panel-info">
-    <div class="panel-heading">Repülőtér szerkesztése</div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Edit">
-                    @Html.HiddenFor(m => m.AirportId)
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Latitude" class="control-label"></label>
-                        <input asp-for="Latitude" class="form-control" />
-                        <span asp-validation-for="Latitude" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Longitude" class="control-label"></label>
-                        <input asp-for="Longitude" class="form-control" />
-                        <span asp-validation-for="Longitude" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </form>
+<div class="container mt-5">
+    <form class="text-center border border-light p-5" asp-action="Edit">
+        <div class="form-row">
+            <div class="col-md-6">
+                <p class="h4 mb-4">Subscribe</p>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="md-form md-bg form-group mt-5">
+                    <i class="fas fa-user prefix"></i>
+                    <input asp-for="AirportId" class="form-control">
+                    <label asp-for="AirportId"></label>
+                    <span asp-validation-for="AirportId" class="text-danger"></span>
+                </div>
             </div>
         </div>
-
-        <div>
-            <a asp-action="Index">Back to List</a>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="md-form md-bg form-group mt-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input asp-for="Name" class="form-control">
+                    <label asp-for="Name"></label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
         </div>
-     </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="md-form md-bg form-group mt-5">
+                    <i class="fas fa-lock prefix"></i>
+                    <input asp-for="Longitude" class="form-control">
+                    <label asp-for="Longitude"></label>
+                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="md-form md-bg form-group mt-5">
+                    <i class="fas fa-lock prefix"></i>
+                    <input asp-for="Latitude" class="form-control">
+                    <label asp-for="Latitude"></label>
+                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <button class="btn btn-info btn-block" type="submit">Mentés</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Vissza a repülőterekhez</a>
 </div>
 

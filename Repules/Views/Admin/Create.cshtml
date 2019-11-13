@@ -3,43 +3,56 @@
 @{
     ViewData["Title"] = "Új felhasználó létrehozása";
 }
-    <div class="panel panel-info">
-        <div class="panel-heading">Új felhasználó létrehozása</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" class="form-control" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" class="form-control" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsAdmin" /> @Html.DisplayNameFor(model => model.IsAdmin)
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Létrehoz" class="btn btn-primary" />
-                        </div>
-                    </form>
+<div class="container mt-5">
+    <form class="text-center border border-light p-5" autocomplete="off" asp-action="Create">
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+            <div class="text-center">
+                <p class="h4 mb-4">Új felhasználó hozzáadása</p>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Name" class="form-control" type="text">
+                        <label asp-for="Name"><i class="fas fa-user"></i> Felhasználó név</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-
-            <div>
-                <a asp-action="Index">Vissza a felhasználókhoz</a>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Email" class="form-control" type="email">
+                        <label asp-for="Email"><i class="fas fa-envelope"> E-mail</i></label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-         </div>
-    </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Password" class="form-control" type="password">
+                        <label asp-for="Password"><i class="fas fa-lock"></i> Jelszó</label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="isAdm" asp-for="IsAdmin">
+                        <label class="custom-control-label" for="isAdm" asp-for="IsAdmin">Is Admin?</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <button class="btn btn-info btn-block" type="submit">Létrehoz</button>
+                </div>
+            </div>
+            <div class="form-row">
+                <a asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-circle-left fa-lg"></i> Vissza a felhasználókhoz</a>
+            </div>
+</form>
+</div>
 

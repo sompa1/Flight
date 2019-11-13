@@ -60,5 +60,62 @@ namespace Okosgardrob.Web.Controllers
             }
             return View(viewModel);
         }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            string uid = id.ToString();
+            var user = await userManager.FindByIdAsync(uid);
+            ListApplicationUserViewModel appUserViewModel = new ListApplicationUserViewModel()
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email
+            };
+            return View(appUserViewModel);
+        }
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+
+            if (ModelState.IsValid)
+            {
+                string uid = id.ToString();
+                var user = await userManager.FindByIdAsync(uid);
+                await userManager.DeleteAsync(user);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            string uid = id.ToString();
+            var user = await userManager.FindByIdAsync(uid);
+            ListApplicationUserViewModel appUserViewModel = new ListApplicationUserViewModel()
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email
+                //isAdmin = if (role==admin)-> true admin jogot lehessen adni valakinek?
+            };
+            return View(appUserViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ListApplicationUserViewModel userViewModel)
+        {
+
+            string id = userViewModel.UserId.ToString();
+            var appUser = await userManager.FindByIdAsync(id);
+            appUser.UserName = userViewModel.UserName;
+            appUser.Email = userViewModel.Email;
+            await userManager.UpdateAsync(appUser);
+            return RedirectToAction("Index");
+        }
     }
 }

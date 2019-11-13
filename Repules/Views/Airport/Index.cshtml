@@ -3,56 +3,81 @@
 @{
     ViewData["Title"] = "Repülőterek";
 }
-
-    <div class="panel panel-info">
-        <div class="panel-heading">Repülőterek</div>
-        <div class="panel-body">
+<div class="card card-cascade narrower mt-5">
+    <div class="container">
+        <div class="px-4">
             <p>
-                <a asp-action="Create">Új repülőtér hozzáadása</a>
+                <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus fa-lg"></i> Új repülőtér hozzáadása</a>
             </p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.WeatherIcon)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Latitude)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Longitude)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td align="center" style=" background-color: #d9edf7;">
-                            <img src=@($"http://openweathermap.org/img/wn/{item.WeatherIcon}.png") alt="Icon">
-                            @Html.DisplayFor(modelItem => item.WeatherMain)
+            <div class="table-wrapper">
+                <!--Table-->
+                <table class="table table-hover table-responsive mb-0">
 
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Latitude)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Longitude)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Szerkesztés", "Edit", new { id = item.AirportId }) |
-                            @Html.ActionLink("Törlés", "Delete", new { id = item.AirportId })
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.WeatherIcon)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Longitude)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Latitude)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                            </th>
+                            <th class="th-lg">
+                            </th>
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+                    <!--Table body-->
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td align="center" style=" background-color: #d9edf7;">
+                                <img src=@($"http://openweathermap.org/img/wn/{item.WeatherIcon}.png") alt="Icon">
+                                @Html.DisplayFor(modelItem => item.WeatherIcon)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Longitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Latitude)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.AirportId" class="btn btn-indigo btn-sm m-0">Szerkesztés</a>
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.AirportId" class="btn btn-indigo btn-sm m-0">Törlés</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--Table-->
+            </div>
         </div>
     </div>
+</div>

@@ -30,27 +30,6 @@ namespace Repules.Controllers
         public IActionResult Index()
         {
             List<Airport> airports = airportManager.GetAirports();
-            /*
-            List<WeatherResponse> weatherResponses = new List<WeatherResponse>();
-            foreach (Airport airport in airports)
-            {
-                weatherResponses.Add(weatherService.GetWeatherByCoords(airport.Latitude, airport.Longitude));
-            }
-
-            List<AirportViewModel> airportViewModels = new List<AirportViewModel>();
-            for (int i= 0; i < airports.Count(); i++)
-            {
-                AirportViewModel av = new AirportViewModel()
-                {
-                    AirportId = airports[i].AirportId,
-                    Name = airports[i].Name,
-                    Weather = weatherResponses[i].Weather[0].Icon,
-                    Latitude = airports[i].Latitude,
-                    Longitude = airports[i].Longitude
-
-                };
-                airportViewModels.Add(av);
-            }*/
 
             List <AirportViewModel> airportViewModels = airports.Select(a => new AirportViewModel()
             {

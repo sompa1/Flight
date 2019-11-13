@@ -8,12 +8,13 @@ namespace Repules.Models
 {
     public class ListApplicationUserViewModel
     {
+        [Display(Name = "Id")]
         public Guid UserId { get; set; }
 
-        [Display(Name = "Felhasználó neve")]
+        [Display(Name = "Felhasználónév")]
         public string UserName { get; set; }
 
-        [Display(Name = "Felhasználó e-mail címe")]
+        [Display(Name = "E-mail cím")]
         public string Email { get; set; }
     }
 }

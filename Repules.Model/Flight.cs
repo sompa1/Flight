@@ -16,6 +16,7 @@ namespace Repules.Model
         public int DurationSeconds { get; set; }
 
         public Guid DepartureLocationId { get; set; }
+
         public Airport DepartureLocation { get; set; }
 
         public Guid? ArrivalLocationId { get; set; }
