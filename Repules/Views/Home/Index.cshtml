@@ -1,22 +1,187 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using  Repules.Model
+@inject UserManager<ApplicationUser> userManager
+@{
     ViewData["Title"] = "Home Page";
 }
 
-    @section HeadScripts {
+@{
+    if (User.IsInRole("admin"))
+    {
+        <div class="container mt-5">
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <div class="card">
 
-<environment include="Development">
-    <link rel="stylesheet" href="~/css/CloudandAirplane.css" />
-</environment>
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/airport_card2.jpg" alt="Card image airport">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Repülőterek kezelése</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Repülőterek hozzáadásához töltsön fel új excel táblát!</p>
+                            <!-- Button -->
+                            <a asp-controller="Airport" asp-action="Upload" class="btn btn-primary">Repülőterek feltöltése</a>
+                            <hr>
+                            <p class="card-text">Repülőterek kilistázásához kattintson!</p>
+                            <a asp-controller="Airport" asp-action="Index" class="btn btn-primary">Repülőterek</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card h-100">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/welcome_user.jpg" alt="Card image welcome">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Üdvözöljük!</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Üdvözöljük kedves adminisztrátor a SmartFlight oldalon! Felhasználók repüléseinek nyilvántartása, repülőterek kezelése!</p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/pilots_card.jpg" alt="Card image pilots">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Felhasználók kezelése</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Felhasználók megtekintése, új felhasználó hozzáadása, szerkesztése, törlése.</p>
+                            <!-- Button -->
+                            <a asp-controller="Admin" asp-action="Index" class="btn btn-primary">Felhasználók</a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card h-100">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/flights_card.gif" alt="Card image flights">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Repülések kezelése</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Felhasználók repüléseinek kezelése: elfogadása vagy elutasítása.</p>
+                            <!-- Button -->
+                            <a asp-controller="AdminFlight" asp-action="Index" class="btn btn-primary">Felhasználói repülések</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else //user
+    {
+        <div class="container mt-5">
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 flex-grow-1 bd-highlight">
+                    <div class="card">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/glider_card2.jpg" alt="Card image glider">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Új repülés hozzáadása</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Biztonságban földet ért? Rögzítse legújabb repüléseit a logfájl feltöltése menüpontban!</p>
+                            <!-- Button -->
+                            <a asp-controller="FlightLogFile" asp-action="Upload" class="btn btn-primary">Logfájl feltöltése</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card h-100">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/welcome_user.jpg" alt="Card image welcome">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Üdvözöljük!</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Üdvözöljük a SmartFlight oldalon! Repülésinek nyilvántartása bárhol, bármikor!</p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card h-100">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/flights_card.gif" alt="Card image flights">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Repüléseim</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Tekintse meg eddig rögzített repüléseit, könnyedén, egyszerűen!</p>
+                            <!-- Button -->
+                            <a asp-controller="UserFlight" asp-action="Index" class="btn btn-primary">Repüléseim</a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="p-2 flex-fill align-self-stretch bd-highlight">
+                    <div class="card">
+
+                        <!-- Card image -->
+                        <img class="card-img-top" src="~/images/weather_card.webp" alt="Card image cap">
+
+                        <!-- Card content -->
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title"><a>Időjárás előrejelzés</a></h4>
+                            <!-- Text -->
+                            <p class="card-text">Kíváncsi, hogy alkalmas-e az időjárás egy jó kis repőülésre? Kattintson és ellenőrizze!</p>
+                            <!-- Button -->
+                            <a asp-controller="Weather" asp-action="SearchCity" class="btn btn-primary">Időjárás előrejelzés</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         }
-
-<div id="sky">
-    <div id="cloud1" class="cloud"></div>
-    <div id="cloud2" class="cloud"></div>
-    <div id="cloud3" class="cloud"></div>
-    <div id="cloud4" class="cloud"></div>
-    <div id="cloud5" class="cloud"></div>
-    <div id="cloud6" class="cloud"></div>
-    <div id="cloud7" class="cloud"></div>
-    <div id="aeroplane"></div>
-</div>
-
+    }

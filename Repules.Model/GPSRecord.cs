@@ -10,7 +10,7 @@ namespace Repules.Model
 
         public Guid GPSRecordId { get; set; }
 
-        public Guid FlightId { get; set; }
+        public Guid? FlightId { get; set; }
 
         public Flight Flight { get; set; }
 

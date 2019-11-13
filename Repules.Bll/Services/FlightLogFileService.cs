@@ -38,7 +38,7 @@ namespace Repules.Bll
 
         public async Task CreateLogFileAsync(Stream stream, CancellationToken cancellationToken)
         {
-            string path = Path.Combine(@"C:\Users\Panna\source\repos\projekt\Repules", Path.GetRandomFileName());
+            string path = Path.Combine(@"C:\Users\psoml\source\repos\projekt\Repules", Path.GetRandomFileName());
             using (var fileStream = File.Create(path))
             {
                 stream.Seek(0, SeekOrigin.Begin); //az elejerol kezdve masolunk

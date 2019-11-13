@@ -1,20 +1,20 @@
-﻿<div class="card card-cascade narrower mt-5">
-    <div class="container">
-                <h4>Repülőterek importálása</h4>
-                <form method="post" enctype="multipart/form-data" asp-controller="Airport" asp-action="Upload">
+﻿<div class="container">
+    <div class="card card-cascade narrower mt-5">
+        <h4>Repülőterek importálása</h4>
+        <form method="post" enctype="multipart/form-data" asp-controller="Airport" asp-action="Upload">
 
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFileLangHTML">
-                        <label class="custom-file-label" for="customFileLangHTML" data-browse="Kiválaszt">
-                            Excel dokumentum
-                        </label>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-outline-success btn-rounded btn-sm my-0 mx-auto" type="submit">
-                            <i class="fas fa-upload"></i>
-                            Feltölt
-                        </button>
-                    </div>
-                </form>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLangHTML" name="files">
+                <label class="custom-file-label" for="customFileLangHTML" data-browse="Kiválaszt">
+                    Excel dokumentum
+                </label>
             </div>
+            <div class="text-center">
+                <button class="btn btn-outline-success btn-rounded btn-sm my-0 mx-auto" type="submit">
+                    <i class="fas fa-upload"></i>
+                    Feltölt
+                </button>
+            </div>
+        </form>
     </div>
+</div>

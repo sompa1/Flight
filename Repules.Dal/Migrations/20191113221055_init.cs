@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repules.Dal.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -238,7 +238,8 @@ namespace Repules.Dal.Migrations
                     ColorA = table.Column<byte>(nullable: false),
                     ColorR = table.Column<byte>(nullable: false),
                     ColorG = table.Column<byte>(nullable: false),
-                    ColorB = table.Column<byte>(nullable: false)
+                    ColorB = table.Column<byte>(nullable: false),
+                    FlightId1 = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -249,6 +250,12 @@ namespace Repules.Dal.Migrations
                         principalTable: "Flights",
                         principalColumn: "FlightId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_GPSRecords_Flights_FlightId1",
+                        column: x => x.FlightId1,
+                        principalTable: "Flights",
+                        principalColumn: "FlightId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -256,8 +263,8 @@ namespace Repules.Dal.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"), "ec45e640-69e0-4177-a819-306979fbb746", "user", "USER" },
-                    { new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"), "cd0507ec-4808-46c1-9dc2-76612740663f", "admin", "ADMIN" }
+                    { new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"), "e0544d58-6cb3-4f6b-b064-9062a8925f1f", "user", "USER" },
+                    { new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"), "5d45ff63-8723-4732-a16d-550fd997e887", "admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -342,6 +349,11 @@ namespace Repules.Dal.Migrations
                 name: "IX_GPSRecords_FlightId",
                 table: "GPSRecords",
                 column: "FlightId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GPSRecords_FlightId1",
+                table: "GPSRecords",
+                column: "FlightId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

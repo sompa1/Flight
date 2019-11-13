@@ -58,12 +58,21 @@
     <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=ktnYkxyV68hnc5EnA94w~-Qmrtso-O42fIdrGJr3Elw~Ap2LjT1Ohl8rTixC9qR_99mdpxPyAoESbnv4uPKH1TBMusHVwTOIkvs9EO2bQnb9'></script>
     <script type='text/javascript'>
         var map;
+        var optrecords = @Html.Raw(Model.OptGPSRecords);
         var records = @Html.Raw(Model.GPSRecords);
         function loadMapScenario() {
             map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
             var locs = records.map(x => new Microsoft.Maps.Location(x.Latitude, x.Longitude));
             var rect = Microsoft.Maps.LocationRect.fromLocations(locs);
             map.setView({ bounds: rect, padding: 1 });
+            for (var i = 0; i < optrecords.length-1 ; i++) {
+            var first = optrecords[i];
+            var second = optrecords[i + 1];
+            var polyline = new Microsoft.Maps.Polyline([
+            new Microsoft.Maps.Location(first.Latitude, first.Longitude),
+            new Microsoft.Maps.Location(second.Latitude, second.Longitude)], {strokeColor: new Microsoft.Maps.Color(1,202,31,123), strokeThickness: 3});
+            map.entities.push(polyline);
+        }
             for (var i = 0; i < records.length-1 ; i++) {
             var first = records[i];
             var second = records[i + 1];

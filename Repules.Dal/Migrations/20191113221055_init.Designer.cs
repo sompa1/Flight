@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repules.Dal;
 
 namespace Repules.Dal.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191113221055_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,14 +152,14 @@ namespace Repules.Dal.Migrations
                         new
                         {
                             Id = new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"),
-                            ConcurrencyStamp = "f53c133f-da48-4e62-9999-f353e4701958",
+                            ConcurrencyStamp = "e0544d58-6cb3-4f6b-b064-9062a8925f1f",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"),
-                            ConcurrencyStamp = "435045a3-57f0-40e3-b31e-9cd42566baef",
+                            ConcurrencyStamp = "5d45ff63-8723-4732-a16d-550fd997e887",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -313,7 +315,7 @@ namespace Repules.Dal.Migrations
 
                     b.Property<byte>("ColorR");
 
-                    b.Property<Guid?>("FlightId");
+                    b.Property<Guid>("FlightId");
 
                     b.Property<Guid?>("FlightId1");
 
@@ -424,11 +426,12 @@ namespace Repules.Dal.Migrations
             modelBuilder.Entity("Repules.Model.GPSRecord", b =>
                 {
                     b.HasOne("Repules.Model.Flight", "Flight")
-                        .WithMany("GPSRecords")
-                        .HasForeignKey("FlightId");
+                        .WithMany("OptimizedGPSRecords")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Repules.Model.Flight")
-                        .WithMany("OptimizedGPSRecords")
+                        .WithMany("GPSRecords")
                         .HasForeignKey("FlightId1");
                 });
 #pragma warning restore 612, 618

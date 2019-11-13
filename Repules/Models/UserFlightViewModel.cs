@@ -26,6 +26,8 @@ namespace Repules.Models
         public string Status { get; set; }
 
         public string GPSRecords { get; set; }
+
+        public string OptGPSRecords { get; set; }
     }
 
 }

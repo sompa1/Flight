@@ -28,6 +28,8 @@ namespace Repules.Model
         public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<GPSRecord> GPSRecords { get; set; }
+        public ICollection<GPSRecord> OptimizedGPSRecords { get; set; }
+
         public Flight()
         {
             GPSRecords = new HashSet<GPSRecord>();

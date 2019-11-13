@@ -53,7 +53,7 @@ namespace Repules.Bll
         public async Task CreateAirportAsync(Stream stream, CancellationToken cancellationToken)
         {
 
-            string path = Path.Combine(@"C:\Users\Panna\source\repos\projekt\Repules", Path.GetRandomFileName());
+            string path = Path.Combine(@"C:\Users\psoml\source\repos\projekt\Repules", Path.GetRandomFileName());
             using (var fileStream = File.Create(path))
             {
                 stream.Seek(0, SeekOrigin.Begin);

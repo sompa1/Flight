@@ -10,8 +10,8 @@ using Repules.Dal;
 namespace Repules.Dal.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20191020191553_Init")]
-    partial class Init
+    [Migration("20191113225156_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,14 +152,14 @@ namespace Repules.Dal.Migrations
                         new
                         {
                             Id = new Guid("a973cb5e-a900-4417-a1cb-08d74a8d3191"),
-                            ConcurrencyStamp = "ec45e640-69e0-4177-a819-306979fbb746",
+                            ConcurrencyStamp = "b08ada16-4ce1-46e0-903a-dd5e0bb4ed5c",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = new Guid("6d801a95-fdc7-4f51-a1ca-08d74a8d3191"),
-                            ConcurrencyStamp = "cd0507ec-4808-46c1-9dc2-76612740663f",
+                            ConcurrencyStamp = "f4920f00-1f11-40d2-905a-0e35733285c6",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -317,6 +317,8 @@ namespace Repules.Dal.Migrations
 
                     b.Property<Guid>("FlightId");
 
+                    b.Property<Guid?>("FlightId1");
+
                     b.Property<double>("Latitude");
 
                     b.Property<double>("Longitude");
@@ -326,6 +328,8 @@ namespace Repules.Dal.Migrations
                     b.HasKey("GPSRecordId");
 
                     b.HasIndex("FlightId");
+
+                    b.HasIndex("FlightId1");
 
                     b.ToTable("GPSRecords");
                 });
@@ -422,9 +426,12 @@ namespace Repules.Dal.Migrations
             modelBuilder.Entity("Repules.Model.GPSRecord", b =>
                 {
                     b.HasOne("Repules.Model.Flight", "Flight")
+                        .WithMany("OptimizedGPSRecords")
+                        .HasForeignKey("FlightId");
+
+                    b.HasOne("Repules.Model.Flight")
                         .WithMany("GPSRecords")
-                        .HasForeignKey("FlightId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("FlightId1");
                 });
 #pragma warning restore 612, 618
         }

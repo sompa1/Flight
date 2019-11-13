@@ -15,20 +15,6 @@ namespace Repules.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Rólunk";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Kapcsolat";
-
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
