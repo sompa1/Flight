@@ -3,56 +3,59 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <div class="card card-cascade narrower mt-5">
-        <div class="container">
-            <div class="px-4">
+<div class="container">
+    <div class="card card-cascade narrower mt-5 p-3">
+        <div class="px-4">
+            <p>
+                <a asp-controller="FlightLogFile" asp-action="Upload" class="btn btn-primary"><i class="fas fa-plus fa-lg"></i> Új repülés hozzáadása</a>
+            </p>
 
-                <div class="table-wrapper">
-                    <!--Table-->
-                    <table class="table table-hover table-responsive mb-0">
+            <div class="table-wrapper">
+                <!--Table-->
+                <table class="table table-hover table-responsive mb-0">
 
-                        <!--Table head-->
-                        <thead>
-                            <tr>
-                                <th class="th-lg">
-                                    <a>
-                                        @Html.DisplayNameFor(model => model.Date)
-                                        <i class="fas fa-sort ml-1"></i>
-                                    </a>
-                                </th>
-                                <th class="th-lg">
-                                    <a>
-                                        @Html.DisplayNameFor(model => model.Duration)
-                                        <i class="fas fa-sort ml-1"></i>
-                                    </a>
-                                </th>
-                                <th class="th-lg">
-                                    <a>
-                                        @Html.DisplayNameFor(model => model.DepartureName)
-                                        <i class="fas fa-sort ml-1"></i>
-                                    </a>
-                                </th>
-                                <th class="th-lg">
-                                    <a>
-                                        @Html.DisplayNameFor(model => model.ArrivalName)
-                                        <i class="fas fa-sort ml-1"></i>
-                                    </a>
-                                </th>
-                                <th class="th-lg">
-                                    <a>
-                                        @Html.DisplayNameFor(model => model.Status)
-                                        <i class="fas fa-sort ml-1"></i>
-                                    </a>
-                                </th>
-                                <th class="th-lg">
-                                </th>
-                            </tr>
-                        </thead>
-                        <!--Table head-->
-                        <!--Table body-->
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Duration)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.DepartureName)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.ArrivalName)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                    <i class="fas fa-sort ml-1"></i>
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                            </th>
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+                    <!--Table body-->
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Date)
@@ -70,23 +73,16 @@
                                     @Html.DisplayFor(modelItem => item.Status)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-indigo btn-sm m-0">Szerkesztés</a>
+                                    <a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-indigo btn-sm m-0">Részletek</a>
                                 </td>
                             </tr>
-                            }
-                        </tbody>
-                        <!--Table body-->
-                    </table>
-                    <!--Table-->
-                </div>
+                        }
+                    </tbody>
+
+                    <!--Table body-->
+                </table>
+                <!--Table-->
             </div>
         </div>
-    </div>
-<div class="panel panel-info">
-    <div class="panel-heading">Repüléseim</div>
-    <div class="panel-body">
-        <p>
-            @Html.ActionLink("Logfájl feltöltés", "Upload", "FlightLogFile")
-        </p>
     </div>
 </div>

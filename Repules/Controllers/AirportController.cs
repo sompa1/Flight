@@ -36,7 +36,7 @@ namespace Repules.Controllers
                 AirportId = a.AirportId,
                 Name = a.Name,
                 WeatherIcon = weatherService.GetWeatherByCoords(a.Latitude, a.Longitude).Weather[0].Icon,
-                WeatherMain = weatherService.GetWeatherByCoords(a.Latitude, a.Longitude).Weather[0].Main,
+                WeatherMain = weatherService.GetWeatherByCoords(a.Latitude, a.Longitude).Weather[0].Description,
                 Latitude = a.Latitude,
                 Longitude = a.Longitude
             }).ToList();
@@ -91,7 +91,22 @@ namespace Repules.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+        public IActionResult Delete(Guid id)
+        {
+            Airport airport = airportManager.GetAirport(id);
+            AirportViewModel airportViewModel = new AirportViewModel()
+            {
+                AirportId = airport.AirportId,
+                Name = airport.Name,
+                Latitude = airport.Latitude,
+                Longitude = airport.Longitude
+            };
+            return View(airportViewModel);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id, CancellationToken cancellationToken)
         {
             await airportManager.DeleteAirport(id, cancellationToken);
             return RedirectToAction("Index");

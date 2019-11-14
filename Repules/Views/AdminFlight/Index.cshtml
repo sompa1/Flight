@@ -4,100 +4,99 @@
 @{
     ViewData["Title"] = "Repülések";
 }
-
-<div class="card card-cascade narrower mt-5">
     <div class="container">
-        <div class="px-4">
-            <form asp-action="Index" method="post">
-                @Html.DropDownList("FlightStatus",
-                        Html.GetEnumSelectList<FlightStatus>(),
-                        "Válaszd ki a repülés státuszát", new { style = "width: 250px;" })
-                <!--class = "form-control"-->
+        <div class="card card-cascade narrower mt-5 p-3">
+            <div class="px-4">
+                <form asp-action="Index" method="post">
 
-                <button type="submit">Szűrés</button>
-            </form>
+                    @Html.DropDownList("FlightStatus",
+                            Html.GetEnumSelectList<FlightStatus>(),
+                            "Válaszd ki a repülés státuszát", new { style = "width: 250px;" })
 
-            <div class="table-wrapper">
-                <!--Table-->
-                <table class="table table-hover table-responsive mb-0">
+                    <button type="submit" class="btn btn-primary btn-sm m-0">Szűrés</button>
+                </form>
 
-                    <!--Table head-->
-                    <thead>
-                        <tr>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.UserName)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.Date)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.Duration)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.DepartureName)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.ArrivalName)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.Status)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                            </th>
-                        </tr>
-                    </thead>
-                    <!--Table head-->
-                    <!--Table body-->
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                <div class="table-wrapper">
+                    <!--Table-->
+                    <table class="table table-hover table-responsive mb-0">
+
+                        <!--Table head-->
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Date)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Duration)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DepartureName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ArrivalName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    <a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-indigo btn-sm m-0">Részletek</a>
-                                </td>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Duration)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.DepartureName)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.ArrivalName)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                </th>
                             </tr>
-                        }
-                    </tbody>
-                    <!--Table body-->
-                </table>
-                <!--Table-->
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Duration)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartureName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ArrivalName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-indigo btn-sm m-0">Részletek</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <!--Table body-->
+                    </table>
+                    <!--Table-->
+                </div>
             </div>
         </div>
     </div>
-</div>

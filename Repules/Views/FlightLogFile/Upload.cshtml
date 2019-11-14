@@ -1,18 +1,19 @@
-﻿
-<div class="panel panel-info">
-    <div class="panel-heading"><h4>Logfájl feltöltés</h4></div>
-    <div class="panel-body">
+﻿<div class="container">
+    <div class="card card-cascade narrower mt-5 p-3">
+        <h4>Logfájl feltöltése</h4>
+        <p>Tölts fel egy logfájlt a formon keresztül:</p>
         <form method="post" enctype="multipart/form-data" asp-controller="FlightLogFile" asp-action="Upload">
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Tölts fel egy logfájlt a formon keresztül:</p>
-                    <input type="file" name="files">
-                </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFileLangHTML" name="files">
+                <label class="custom-file-label" for="customFileLangHTML" data-browse="Kiválaszt">
+                    IGC fájl
+                </label>
             </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Feltöltés">
-                </div>
+            <div class="text-center">
+                <button class="btn btn-outline-success btn-rounded btn-sm m-2 mx-auto" type="submit">
+                    <i class="fas fa-upload"></i>
+                    Feltölt
+                </button>
             </div>
         </form>
     </div>

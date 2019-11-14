@@ -4,12 +4,15 @@
     ViewData["Title"] = "SearchCity";
 }
 
-    <div class="container mt-5">
-        <form class="form-inline md-form form-sm mt-0" method="post">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input class="form-control form-control-sm ml-3 w-75" asp-for="CityName" placeholder="Város"
-                   aria-label="Keresés">
-            <button class="btn btn-outline-success btn-rounded btn-sm my-0" asp-controller="Weather" asp-action="SearchCity">Keresés</button>
-        </form>
 
-    </div>
+                <div class="container">
+                    <div class="card card-cascade narrower mt-5 p-3">
+                        <form class="form-inline md-form form-sm m-0" method="post">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                            <input class="form-control form-control-sm ml-3 w-75" asp-for="CityName" placeholder="Város"
+                                   aria-label="Keresés">
+                            <button class="btn btn-outline-success btn-rounded btn-sm my-0" asp-controller="Weather" asp-action="SearchCity">Keresés</button>
+                        </form>
+
+                    </div>
+                </div>

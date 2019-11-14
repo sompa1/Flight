@@ -4,73 +4,73 @@
     ViewData["Title"] = "Felhasználók";
 }
 <!-- Table with panel -->
-<div class="card card-cascade narrower mt-5">
     <div class="container">
-        <div class="px-4">
-            <p>
-                <a asp-action="Create" class="btn btn-primary"><i class="fas fa-user-plus fa-lg"></i> Új felhasználó felvétele</a>
-            </p>
+        <div class="card card-cascade narrower mt-5 p-3">
+            <div class="px-4">
+                <p>
+                    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-user-plus fa-lg"></i> Új felhasználó felvétele</a>
+                </p>
 
-            <div class="table-wrapper">
-                <!--Table-->
-                <table class="table table-hover table-responsive mb-0">
+                <div class="table-wrapper">
+                    <!--Table-->
+                    <table class="table table-hover table-responsive mb-0">
 
-                    <!--Table head-->
-                    <thead>
-                        <tr>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.UserId)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a>
-                                    @Html.DisplayNameFor(model => model.UserName)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                                <a href="">
-                                    @Html.DisplayNameFor(model => model.Email)
-                                    <i class="fas fa-sort ml-1"></i>
-                                </a>
-                            </th>
-                            <th class="th-lg">
-                            </th>
-                            <th class="th-lg">
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <!--Table head-->
-                    <!--Table body-->
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                        <!--Table head-->
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-indigo btn-sm m-0">Szerkesztés</a>
-                                </td>
-                                <td>
-                                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-outline-primary btn-sm m-0 waves-effect">Törlés</a>
-                                </td>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.UserId)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a href="">
+                                        @Html.DisplayNameFor(model => model.Email)
+                                        <i class="fas fa-sort ml-1"></i>
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                </th>
+                                <th class="th-lg">
+                                </th>
+
                             </tr>
-                        }
-                    </tbody>
-                    <!--Table body-->
-                </table>
-                <!--Table-->
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-indigo btn-sm m-0">Szerkesztés</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-outline-danger btn-sm m-0 waves-effect">Törlés</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <!--Table body-->
+                    </table>
+                    <!--Table-->
+                </div>
             </div>
         </div>
     </div>
-</div>

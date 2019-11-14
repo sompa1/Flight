@@ -4,20 +4,17 @@
     ViewData["Title"] = "Törlés";
 }
 
-    <div class="panel panel-info">
-        <div class="panel-heading">Repülőtér törlése</div>
-        <div class="panel-body">
-            <h2>Törlés</h2>
+    <div class="container">
+        <div class="card card-cascade narrower mt-5 p-3">
+            <div class="px-4">
 
-            <h3>Biztosan törölni szeretnéd?</h3>
-            <div>
-                <h4>AirportViewModel</h4>
+                <h3>Biztosan törölni szeretnéd?</h3>
                 <hr />
                 <dl class="dl-horizontal">
-                    <dt>
+                    <dt style="display:none;">
                         @Html.DisplayNameFor(model => model.AirportId)
                     </dt>
-                    <dd>
+                    <dd style="display:none;">
                         @Html.DisplayFor(model => model.AirportId)
                     </dd>
                     <dt>
@@ -39,11 +36,10 @@
                         @Html.DisplayFor(model => model.Longitude)
                     </dd>
                 </dl>
-
                 <form asp-action="Delete">
-                    <input type="submit" value="Törlés" class="btn btn-default" /> |
-                    <a asp-action="Index">Vissza a repülőterekhez</a>
+                    <a asp-action="Index" class="btn btn-primary btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Vissza a repülőterekhez</a>
+                    <input type="submit" value="Törlés" class="btn btn-danger btn-sm" />
                 </form>
             </div>
+            </div>
         </div>
-    </div>

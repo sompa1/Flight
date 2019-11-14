@@ -1,60 +1,53 @@
 ﻿@model Repules.Models.AirportViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Szerkesztés";
 }
-<div class="container mt-5">
-    <form class="text-center border border-light p-5" asp-action="Edit">
-        <div class="form-row">
-            <div class="col-md-6">
-                <p class="h4 mb-4">Subscribe</p>
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="md-form md-bg form-group mt-5">
-                    <i class="fas fa-user prefix"></i>
-                    <input asp-for="AirportId" class="form-control">
-                    <label asp-for="AirportId"></label>
-                    <span asp-validation-for="AirportId" class="text-danger"></span>
+    <div class="container mt-5 p-3">
+        <form class="text-center border border-light p-5" autocomplete="off" asp-action="Edit">
+            <input autocomplete="false" name="hidden" type="text" style="display:none;">
+            <div class="text-center">
+                <p class="h4 mb-4 text-light">Repülőtér szerkesztése</p>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="AirportId" style="display:none;">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Name" class="form-control">
+                        <label asp-for="Name"><i class="fas fa-plane-arrival"></i> Repülőtér neve</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                <div class="md-form md-bg form-group mt-5">
-                    <i class="fas fa-envelope prefix"></i>
-                    <input asp-for="Name" class="form-control">
-                    <label asp-for="Name"></label>
-                    <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Longitude" class="form-control">
+                        <label asp-for="Longitude"><i class="fas fa-arrows-alt-v"></i> Hosszúsági koordináta</label>
+                        <span asp-validation-for="Longitude" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                <div class="md-form md-bg form-group mt-5">
-                    <i class="fas fa-lock prefix"></i>
-                    <input asp-for="Longitude" class="form-control">
-                    <label asp-for="Longitude"></label>
-                    <span asp-validation-for="Longitude" class="text-danger"></span>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="md-form md-bg form-group mt-5">
+                        <input asp-for="Latitude" class="form-control">
+                        <label asp-for="Latitude"><i class="fas fa-arrows-alt-h"></i> Szélességi koordináta</label>
+                        <span asp-validation-for="Latitude" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                <div class="md-form md-bg form-group mt-5">
-                    <i class="fas fa-lock prefix"></i>
-                    <input asp-for="Latitude" class="form-control">
-                    <label asp-for="Latitude"></label>
-                    <span asp-validation-for="Latitude" class="text-danger"></span>
+            <div class="form-row">
+                <div class="col-md-6 mt-2">
+                    <button class="btn btn-info btn-block" type="submit">Mentés</button>
                 </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6">
-                <button class="btn btn-info btn-block" type="submit">Mentés</button>
+            <div class="form-row">
+                <div class="col-md-6 mt-2">
+                    <a asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-circle-left fa-lg"></i> Vissza a repülőterekhez</a>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
-<div>
-    <a asp-action="Index">Vissza a repülőterekhez</a>
-</div>
+        </form>
+    </div>
 

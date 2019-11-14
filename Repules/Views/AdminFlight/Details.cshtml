@@ -5,85 +5,122 @@
     ViewData["Title"] = "Részletek";
 }
 
-<div class="panel panel-info">
-    <div class="panel-heading">Részletek</div>
-    <div class="panel-body">
-        <h2>@Model.UserName : @Model.Date</h2>
+<div class="container">
+    <div class="card card-cascade narrower mt-5 p-3">
+        <div class="px-4">
+            <h2>Pilóta neve: @Model.UserName - repülés időpontja: @Model.Date</h2>
 
-        <div class="split left">
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.UserName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Duration)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Duration)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.DepartureName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.DepartureName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.ArrivalName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.ArrivalName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-                <dt></dt>
-                <dd>
+            <div class="table-wrapper">
+                <!--Table-->
+                <table class="table table-responsive mb-0">
+
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Duration)
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.DepartureName)
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.ArrivalName)
+                                </a>
+                            </th>
+                            <th class="th-lg">
+                                <a>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <!--Table head-->
+                    <!--Table body-->
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Duration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.DepartureName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.ArrivalName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Status)
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--Table-->
+            </div>
+            <div class="col-12 text-center m-2">
+                <div class="btn-group" role="group">
                     @if (Model.Status == "Elfogadásra vár")
                     {
                         <form asp-controller="AdminFlight" asp-action="Accept" method="post">
                             @Html.HiddenFor(f => f.FlightId)
-                            <button type="submit" class="button">Elfogad</button>
+                            <button type="submit" class="btn btn-success">Elfogad</button>
                         </form>
-
                         <form asp-controller="AdminFlight" asp-action="Decline" method="post">
                             @Html.HiddenFor(f => f.FlightId)
-                            <button type="submit" class="button">Elutasít</button>
+                            <button type="submit" class="btn btn-danger">Elutasít</button>
                         </form>
                     }
-                </dd>
-            </dl>
-        </div>
-        <div>
-            <a asp-action="Index">Vissza a repülésekhez</a>
-        </div>
-        <div id='printoutPanel'></div>
-        <div id='myMap' style='width: 50%; height: 400px;'></div>
-    </div>
-</div>
+                </div>
+            </div>
+            <div class="text-left mb-3">
+                <a asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-circle-left fa-lg"></i> Vissza a repülésekhez</a>
+            </div>
 
-@section HeadScripts {
-    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=ktnYkxyV68hnc5EnA94w~-Qmrtso-O42fIdrGJr3Elw~Ap2LjT1Ohl8rTixC9qR_99mdpxPyAoESbnv4uPKH1TBMusHVwTOIkvs9EO2bQnb9'></script>
-    <script type='text/javascript'>
+            <div id='printoutPanel'></div>
+            <div id='myMap' style='width: 100%; height: 600px;'></div>
+        </div>
+        </div>
+ </div>
+
+    @section HeadScripts {
+        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=ktnYkxyV68hnc5EnA94w~-Qmrtso-O42fIdrGJr3Elw~Ap2LjT1Ohl8rTixC9qR_99mdpxPyAoESbnv4uPKH1TBMusHVwTOIkvs9EO2bQnb9'></script>
+        <script type='text/javascript'>
         var map;
-        var records = @Html.Raw(Model.GPSRecords);
+            var records = @Html.Raw(Model.GPSRecords);
+            var optrecords = @Html.Raw(Model.OptGPSRecords);
         function loadMapScenario() {
             map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
             var locs = records.map(x => new Microsoft.Maps.Location(x.Latitude, x.Longitude));
             var rect = Microsoft.Maps.LocationRect.fromLocations(locs);
             map.setView({ bounds: rect, padding: 1 });
+            for (var i = 0; i < optrecords.length-1 ; i++) {
+            var first = optrecords[i];
+            var second = optrecords[i + 1];
+            var polyline = new Microsoft.Maps.Polyline([
+            new Microsoft.Maps.Location(first.Latitude, first.Longitude),
+            new Microsoft.Maps.Location(second.Latitude, second.Longitude)], {strokeColor: new Microsoft.Maps.Color(1,202,31,123), strokeThickness: 3});
+            map.entities.push(polyline);
+        }
             for (var i = 0; i < records.length-1 ; i++) {
             var first = records[i];
             var second = records[i + 1];
@@ -94,10 +131,10 @@
 
         }
       }
-    </script>
-}
-@section Scripts {
-    <script>
-        document.querySelector("body").onload = loadMapScenario;
-    </script>
-}
+        </script>
+    }
+    @section Scripts {
+        <script>
+            document.querySelector("body").onload = loadMapScenario;
+        </script>
+    }

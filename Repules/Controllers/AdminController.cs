@@ -81,8 +81,17 @@ namespace Okosgardrob.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                if (id == null)
+                {
+                    return BadRequest();
+                }
                 string uid = id.ToString();
                 var user = await userManager.FindByIdAsync(uid);
+                var rolesForUser = await userManager.GetRolesAsync(user);
+                foreach ( var role in rolesForUser) //innen tranzakciónak kéne legyen?
+                {
+                    var result = await userManager.RemoveFromRoleAsync(user, role);
+                }
                 await userManager.DeleteAsync(user);
                 return RedirectToAction("Index");
             }

@@ -1,58 +1,83 @@
 ﻿@model Repules.Models.UserFlightViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Részletek";
 }
 
-<div class="panel panel-info">
-    <div class="panel-heading">Részletek</div>
-    <div class="panel-body">
-        <h2>@Model.Date</h2>
+    <div class="container">
+        <div class="card card-cascade narrower mt-5 p-3">
+            <div class="px-4">
+                <h2>Repülés dátuma: @Model.Date</h2>
 
-        <div>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Duration)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Duration)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.DepartureName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.DepartureName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.ArrivalName)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.ArrivalName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-            </dl>
+                <div class="table-wrapper">
+                    <!--Table-->
+                    <table class="table table-responsive mb-0">
+
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Duration)
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.DepartureName)
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.ArrivalName)
+                                    </a>
+                                </th>
+                                <th class="th-lg">
+                                    <a>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => model.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Duration)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.DepartureName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.ArrivalName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Status)
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!--Table body-->
+                    </table>
+                    <!--Table-->
+                </div>
+                <div class="text-left mb-3">
+                    <a asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-circle-left fa-lg"></i> Vissza a repüléseimhez</a>
+                </div>
+
+                <div id='printoutPanel'></div>
+
+                <div id='myMap' style='width: 100%; height: 600px;'></div>
+            </div>
         </div>
-        <div>
-            <a asp-action="Index">Vissza a repüléseimhez</a>
-        </div>
-
-        <div id='printoutPanel'></div>
-
-        <div id='myMap' style='width: 50%; height: 400px;'></div>
     </div>
-</div>
 
 @section HeadScripts {
     <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=ktnYkxyV68hnc5EnA94w~-Qmrtso-O42fIdrGJr3Elw~Ap2LjT1Ohl8rTixC9qR_99mdpxPyAoESbnv4uPKH1TBMusHVwTOIkvs9EO2bQnb9'></script>
