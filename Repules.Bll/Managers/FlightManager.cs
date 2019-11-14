@@ -69,7 +69,7 @@ namespace Repules.Bll.Managers
 
         private List<GPSRecord> GetApproximatingNodes(List<GPSRecord> fullSet, int targetCount = 7)
         {
-            const double step = 0.0001; // the stemp by which bioas is incremented.
+            const double step = 0.0001; // the step by which bias is incremented.
             const int minModificationsPerRun = 20; // allows to increase bias even if modifications were performed.
             int strictBiasBound = targetCount * 16; // defines the bound after which optimisations are removed
 
@@ -115,7 +115,7 @@ namespace Repules.Bll.Managers
                 {
                     modified = 0;
                 }
-                //formula works better if avg value is less than true average; Mhen list is small, correction for length is too great, thus avg value is locked at final stages
+                //formula works better if avg value is less than true average; When list is small, correction for length is too great, thus avg value is locked at final stages
                 avg = (a.Count >= strictBiasBound) ? (avg + avg + (sum / b.Count)) / 3 : avg;
                 a = b;
                 b = new List<GPSRecord>(a.Count);
