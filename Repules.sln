@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repules", "Repules\Repules.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repules.Model", "Repules.Model\Repules.Model.csproj", "{BE36DD13-F4D3-465F-973C-A13FE238176D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repules.Dal", "Repules.Dal\Repules.Dal.csproj", "{91A9EE57-DCE2-4180-835A-418CC8BAF467}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repules.Dal", "Repules.Dal\Repules.Dal.csproj", "{91A9EE57-DCE2-4180-835A-418CC8BAF467}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repules.Bll", "Repules.Bll\Repules.Bll.csproj", "{2F385BBE-11ED-4193-B726-EFE90C75C3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repules.Bll", "Repules.Bll\Repules.Bll.csproj", "{2F385BBE-11ED-4193-B726-EFE90C75C3AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRepules", "TestRepules\TestRepules.csproj", "{D5FBD981-AA82-40B9-9D7F-E0564D8D0F9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2F385BBE-11ED-4193-B726-EFE90C75C3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F385BBE-11ED-4193-B726-EFE90C75C3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F385BBE-11ED-4193-B726-EFE90C75C3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FBD981-AA82-40B9-9D7F-E0564D8D0F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FBD981-AA82-40B9-9D7F-E0564D8D0F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FBD981-AA82-40B9-9D7F-E0564D8D0F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FBD981-AA82-40B9-9D7F-E0564D8D0F9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

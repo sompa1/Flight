@@ -19,9 +19,9 @@ namespace Repules.Bll.Managers
             this.applicationContext = applicationContext;
             this.flightLogFileService = flightLogFileService;
         }
-        public async Task CreateLogFile(Stream stream, CancellationToken cancellationToken)
+        public async Task CreateLogFile(Stream stream, CancellationToken cancellationToken, string path)
         {
-            await flightLogFileService.CreateLogFileAsync(stream, cancellationToken);
+            await flightLogFileService.CreateLogFileAsync(stream, cancellationToken, path);
             await applicationContext.SaveChangesAsync(cancellationToken);
         }
     }

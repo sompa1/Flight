@@ -12,6 +12,8 @@ using Repules.Bll;
 using Repules.Model;
 using Repules.Models;
 using Repules.Model.WeatherMapModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Repules.Controllers
 {
@@ -20,11 +22,13 @@ namespace Repules.Controllers
     {
         private readonly AirportManager airportManager;
         private readonly IWeatherService weatherService;
+        private readonly IHostingEnvironment env;
 
-        public AirportController(AirportManager airportManager, IWeatherService weatherService)
+        public AirportController(AirportManager airportManager, IWeatherService weatherService, IHostingEnvironment env)
         {
             this.airportManager = airportManager;
             this.weatherService = weatherService;
+            this.env = env;
         }
 
         public IActionResult Index()
@@ -120,14 +124,14 @@ namespace Repules.Controllers
         [HttpPost]
         public async Task<IActionResult> Upload(List<IFormFile> files, CancellationToken cancellationToken)
         {
-
+            string path = env.WebRootPath + "\\res\\AirportExcelFiles";
             foreach (var formFile in files)
             {
                 if (formFile.Length > 0)
                 {
                     using (var stream = formFile.OpenReadStream())
                     {
-                        await airportManager.CreateAirport(stream, cancellationToken);
+                        await airportManager.CreateAirport(stream, cancellationToken, path);
                     }
                 }
             }

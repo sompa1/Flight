@@ -18,7 +18,11 @@ namespace Repules.Bll.Managers
         {
             this.applicationContext = applicationContext;
             this.airportService = airportService;
+        }
 
+        public AirportManager(IAirportService airportService)
+        {
+            this.airportService = airportService;
         }
 
         public List<Airport> GetAirports()
@@ -43,9 +47,9 @@ namespace Repules.Bll.Managers
             await applicationContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task CreateAirport(Stream stream, CancellationToken cancellationToken)
+        public async Task CreateAirport(Stream stream, CancellationToken cancellationToken, string path)
         {
-            await airportService.CreateAirportAsync(stream, cancellationToken);
+            await airportService.CreateAirportAsync(stream, cancellationToken, path);
             await applicationContext.SaveChangesAsync(cancellationToken);
         }
 

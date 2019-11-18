@@ -24,7 +24,6 @@ namespace Repules.Bll
             this._httpContextAccessor = httpContextAccessor;
         }
 
-
         public List<FlightLogFile> GetUploadedFlightLogFiles()
         {
             List<FlightLogFile> fileList = applicationContext.FlightLogFiles.Where(f => f.FlightLogFileStatus == FlightLogFileStatus.Uploaded).ToList();
@@ -36,16 +35,16 @@ namespace Repules.Bll
             return file;
         }
 
-        public async Task CreateLogFileAsync(Stream stream, CancellationToken cancellationToken)
+        public async Task CreateLogFileAsync(Stream stream, CancellationToken cancellationToken, string path)
         {
-            string path = Path.Combine(@"C:\Users\psoml\source\repos\projekt\Repules", Path.GetRandomFileName());
-            using (var fileStream = File.Create(path))
+            string filepath = Path.Combine(path, Path.GetRandomFileName());
+            using (var fileStream = File.Create(filepath))
             {
                 stream.Seek(0, SeekOrigin.Begin); //az elejerol kezdve masolunk
                 stream.CopyTo(fileStream);
             }
             FlightLogFile flightLogFile = new FlightLogFile();
-            flightLogFile.FilePath = path;
+            flightLogFile.FilePath = filepath;
             flightLogFile.FlightLogFileStatus = FlightLogFileStatus.Uploaded;
             Guid userId = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             flightLogFile.ApplicationUserId = userId;

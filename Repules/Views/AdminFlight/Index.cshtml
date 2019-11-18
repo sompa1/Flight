@@ -8,11 +8,9 @@
         <div class="card card-cascade narrower mt-5 p-3">
             <div class="px-4">
                 <form asp-action="Index" method="post">
-
-                    @Html.DropDownList("FlightStatus",
-                            Html.GetEnumSelectList<FlightStatus>(),
-                            "Válaszd ki a repülés státuszát", new { style = "width: 250px;" })
-
+                    <select name="flightStatus" asp-items="Html.GetEnumSelectList<FlightStatus>()" class="browser-default custom-select">
+                        <option selected="selected" value="">Válaszd ki a repülés státuszát</option>
+                    </select>
                     <button type="submit" class="btn btn-primary btn-sm m-0">Szűrés</button>
                 </form>
 

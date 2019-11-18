@@ -50,16 +50,16 @@ namespace Repules.Bll
             applicationContext.Airports.Remove(airport);
         }
 
-        public async Task CreateAirportAsync(Stream stream, CancellationToken cancellationToken)
+        public async Task CreateAirportAsync(Stream stream, CancellationToken cancellationToken, string path)
         {
 
-            string path = Path.Combine(@"C:\Users\psoml\source\repos\projekt\Repules", Path.GetRandomFileName());
-            using (var fileStream = File.Create(path))
+            string filepath = Path.Combine(path, Path.GetRandomFileName());
+            using (var fileStream = File.Create(filepath))
             {
                 stream.Seek(0, SeekOrigin.Begin);
                 stream.CopyTo(fileStream);
             }
-            var fileInfo = new FileInfo(path);
+            var fileInfo = new FileInfo(filepath);
 
             using (var excelPackage = new ExcelPackage(fileInfo))
             {

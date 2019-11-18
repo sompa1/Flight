@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AirportExcelFile\" />
-    <Folder Include="FlightLogs\" />
+    <Folder Include="wwwroot\res\AirportExcelFiles\" />
+    <Folder Include="wwwroot\res\FlightLogs\" />
   </ItemGroup>
 
 

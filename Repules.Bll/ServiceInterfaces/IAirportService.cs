@@ -10,7 +10,7 @@ namespace Repules.Bll
     public interface IAirportService
     {
         Task AddAirportAsync(Airport airport, CancellationToken cancellationToken);
-        Task CreateAirportAsync(Stream stream, CancellationToken cancellationToken);
+        Task CreateAirportAsync(Stream stream, CancellationToken cancellationToken, string path);
         void DeleteAirport(Guid id);
         Airport GetAirport(Guid id);
         List<Airport> GetAirports();

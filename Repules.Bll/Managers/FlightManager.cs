@@ -29,6 +29,11 @@ namespace Repules.Bll.Managers
             this.gPSRecordService = gPSRecordService;
         }
 
+        public FlightManager(IFlightService flightService)
+        {
+            this.flightService = flightService;
+        }
+
         public async Task ProcessFlightsAsync()
         {
             var uploadedFiles = flightLogFileService.GetUploadedFlightLogFiles();
