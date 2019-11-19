@@ -58,7 +58,7 @@ namespace Repules.Controllers
                 DepartureName = flight.DepartureLocation.Name,
                 ArrivalName = flight.ArrivalLocation?.Name,
                 Status = flight.FlightStatus.GetDescription(),
-                OptGPSRecords = JsonConvert.SerializeObject(flight.OptimizedGPSRecords.Select(x => new
+                OptGPSRecords = JsonConvert.SerializeObject(flight.GPSRecords.Where(ent=> ent.IsOptimized).Select(x => new
                 {
                     Latitude = x.Latitude,
                     Longitude = x.Longitude,

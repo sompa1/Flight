@@ -11,8 +11,9 @@ namespace Repules.Model
         public Guid GPSRecordId { get; set; }
 
         public Guid? FlightId { get; set; }
-
         public Flight Flight { get; set; }
+
+        public bool IsOptimized { get; set; }
 
         public DateTime TimeStamp { get; set; }
 

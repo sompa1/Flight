@@ -20,11 +20,6 @@ namespace Repules.Bll.Managers
             this.airportService = airportService;
         }
 
-        public AirportManager(IAirportService airportService)
-        {
-            this.airportService = airportService;
-        }
-
         public List<Airport> GetAirports()
         {
             return airportService.GetAirports();

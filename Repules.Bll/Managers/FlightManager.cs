@@ -29,11 +29,6 @@ namespace Repules.Bll.Managers
             this.gPSRecordService = gPSRecordService;
         }
 
-        public FlightManager(IFlightService flightService)
-        {
-            this.flightService = flightService;
-        }
-
         public async Task ProcessFlightsAsync()
         {
             var uploadedFiles = flightLogFileService.GetUploadedFlightLogFiles();
@@ -56,8 +51,11 @@ namespace Repules.Bll.Managers
                         flightLog.FlightLogFileStatus = FlightLogFileStatus.Processed;
                         await flightService.AddFlightAsync(flight);
                         gPSRecordService.SetColor(flight);
-
-                        flight.OptimizedGPSRecords = GetApproximatingNodes(flight.GPSRecords.ToList());
+                        var optimizedGPSRecords = GetApproximatingNodes(flight.GPSRecords.ToList());
+                        foreach (var gpsRecord in optimizedGPSRecords)
+                        {
+                            flight.GPSRecords.Single(ent => ent.GPSRecordId == gpsRecord.GPSRecordId).IsOptimized = true; ;
+                        }
 
                         await applicationContext.SaveChangesAsync();
                     }

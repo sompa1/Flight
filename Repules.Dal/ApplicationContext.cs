@@ -33,20 +33,17 @@ namespace Repules.Dal
                                     .WithMany(al => al.ArrivalFlights);
 
             builder.Entity<Flight>()
-                        .HasMany(ent => ent.OptimizedGPSRecords); ;
-
-            builder.Entity<Flight>()
                         .HasMany(ent => ent.GPSRecords)
                         .WithOne(ent => ent.Flight)
                         .HasForeignKey(ent => ent.FlightId)
                         .OnDelete(DeleteBehavior.ClientSetNull);
-
 
             builder.Entity<GPSRecord>()
                         .HasOne(ent => ent.Flight)
                         .WithMany(ent => ent.GPSRecords)
                         .HasForeignKey(ent => ent.FlightId)
                         .OnDelete(DeleteBehavior.ClientSetNull);
+
 
             var cascadeFKs = builder.Model.GetEntityTypes().SelectMany(t => t.GetForeignKeys())
                                                            .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
